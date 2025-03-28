@@ -1,0 +1,21 @@
+
+
+.home{
+    margin: 10px;
+}
+
+.seccion{
+    margin: 10px;
+    padding: 10px;
+    border: 2px solid rgb(206, 141, 77);
+    display: flex;
+    background-color: antiquewhite;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 20px;
+}
+
+.imagen{
+    width: 100px;
+}

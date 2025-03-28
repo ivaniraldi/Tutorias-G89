@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tutoria Arreglos y objetos</title>
+  </head>
+  <body>
+    <h1>Arreglos y Objetos de JavaScript</h1>
+
+    <div id="container"></div>
+
+    <section class="articulos"></section>
+
+    <ul id="datos"></ul>
+    <script>
+      const articulo = {
+        id: 31,
+        titulo: "Autos nuevos en Chile",
+        subtitulo: "El mercado de autos se normaliza",
+        descripcion: `No es novedad que los precios
+de los autos usados se han disparado debido
+a la falta en stock de autos nuevos, sin embargo
+puede que esto esté llegando a su fin...`,
+      };
+
+      const datos = [1200, 350, 1500, 1400, 250, 5000, 1950, 1952];
+
+      const d = document.querySelector("#datos");
+
+      let plantilla = "";
+
+      for (let el of datos) {
+        if (el > 1000 && el < 2000) {
+          plantilla += `<li style="color: green">${el}</li>`;
+        } else {
+          plantilla += `<li style="color: red">${el}</li>`;
+        }
+      }
+      d.innerHTML = plantilla;
+    </script>
+
+    <script src="./assets/js/script.js"></script>
+  </body>
+</html>

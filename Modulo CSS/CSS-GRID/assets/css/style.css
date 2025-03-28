@@ -1,0 +1,48 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+.grid-container {
+    display: grid;
+    grid-template-areas: 
+    "encabezado encabezado"
+    " contenido-principal menu-lateral "
+    "pie-de-pagina pie-de-pagina"
+    ;
+    grid-template-columns: 85% 1fr ;
+    grid-template-rows: 10% 80% 10%;
+    gap:10px;
+    min-height: 100vh;
+}
+
+.galeria-imagenes{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 10px;
+}
+.galeria-imagenes, img{
+    width: 200px;
+}
+
+.encabezado{
+    grid-area: encabezado;
+    background-color: rgb(163, 163, 228);
+}
+
+.menu-lateral{
+    grid-area: menu-lateral;
+    background-color: rgb(163, 163, 228);
+}
+
+.contenido-principal{
+    display: flex;
+    justify-content: center;
+    grid-area: contenido-principal;
+    background-color: rgb(163, 163, 228);
+}
+
+.pie-de-pagina{
+    grid-area: pie-de-pagina;
+    background-color: rgb(163, 163, 228);
+}
