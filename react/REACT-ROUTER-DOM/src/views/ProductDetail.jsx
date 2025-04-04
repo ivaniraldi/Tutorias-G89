@@ -3,11 +3,11 @@ import { Link, useParams } from "react-router-dom";
 
 export default function ProductDetail() {
   const [product, setProduct] = useState(null);
-  const { parametro } = useParams();
+  const { pepito } = useParams();
 
   const getProduct = async () => {
     const respuesta = await fetch(
-      `https://fakestoreapi.com/products/${parametro}`
+      `https://fakestoreapi.com/products/${pepito}`
     );
     const data = await respuesta.json();
     setProduct(data);
@@ -15,7 +15,7 @@ export default function ProductDetail() {
 
   useEffect(() => {
     getProduct();
-  }, [product, parametro]);
+  }, [product, pepito]);
 
   
 

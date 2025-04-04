@@ -23,7 +23,7 @@ function App() {
             element={userIsLogged ? <Profile /> : <Navigate to={"/login"} />}
           />
           <Route path="/register" element={<Register />} />
-          <Route path="/product/:parametro" element={<ProductDetail />} />
+          <Route path="/product/:pepito" element={<ProductDetail />} />
           <Route path="*" element={<NotFound/>} />
         </Routes>
         <Footer />
