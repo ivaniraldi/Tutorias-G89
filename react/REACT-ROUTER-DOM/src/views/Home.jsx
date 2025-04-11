@@ -1,10 +1,14 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import ProductCard from "../components/ProductCard";
 import Gallery from "../components/Gallery";
+import { GlobalContext } from "../context/GlobalContext";
 
 export default function Home() {
   const apiUrl = "https://fakestoreapi.com/products";
   const [products, setProducts] = useState([]);
+
+  const { user } = useContext(GlobalContext);
+  console.log(user);
 
   const getProducts = async () => {
     const respuesta = await fetch(apiUrl);

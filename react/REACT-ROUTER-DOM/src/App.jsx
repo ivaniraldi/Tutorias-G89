@@ -8,9 +8,11 @@ import NavBar from "./components/NavBar";
 import Footer from "./components/Footer";
 import NotFound from "./views/NotFound";
 import ProductDetail from "./views/ProductDetail";
+import { GlobalContext } from "./context/GlobalContext";
+import { useContext } from "react";
 
 function App() {
-  const userIsLogged = false;
+  const {userIsLogged} = useContext(GlobalContext);
   return (
     <>
       <div className="d-flex flex-column min-vh-100 justify-content-between">
@@ -24,7 +26,7 @@ function App() {
           />
           <Route path="/register" element={<Register />} />
           <Route path="/product/:pepito" element={<ProductDetail />} />
-          <Route path="*" element={<NotFound/>} />
+          <Route path="*" element={<NotFound />} />
         </Routes>
         <Footer />
       </div>

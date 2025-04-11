@@ -1,8 +1,16 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useContext } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { GlobalContext } from "../context/GlobalContext";
 
 export default function NavBar() {
-  const userIsLogged = false;
+  const { userIsLogged, user, setUser, setUserIsLogged } = useContext(GlobalContext);
+  const navegar = useNavigate();
+
+  const handleLogout = () => {
+    setUser(null)
+    setUserIsLogged(false)
+    navegar("/")
+  }
   return (
     <nav className="navbar navbar-expand-lg">
       <div className="container-fluid">
@@ -27,7 +35,8 @@ export default function NavBar() {
                 Inicio
               </Link>
             </li>
-            <li className="nav-item">
+            {!userIsLogged && <>
+              <li className="nav-item">
               <Link className="nav-link" aria-current="page" to="/login">
                 Login
               </Link>
@@ -37,6 +46,7 @@ export default function NavBar() {
                 Register
               </Link>
             </li>
+            </>}
             {userIsLogged && (
               <li className="nav-item dropdown">
                 <a
@@ -56,16 +66,16 @@ export default function NavBar() {
                   </li>
                   <li>
                     <a className="dropdown-item" href="#">
-                      Another action
-                    </a>
+                      <img style={{width: "30px", borderRadius:"100%"}} src="https://upload.wikimedia.org/wikipedia/commons/7/7c/Profile_avatar_placeholder_large.png?20150327203541" alt="" /> {user.username}
+                    </a> 
                   </li>
                   <li>
                     <hr className="dropdown-divider" />
                   </li>
                   <li>
-                    <a className="dropdown-item" href="#">
-                      Something else here
-                    </a>
+                    <button className="dropdown-item text-danger font-weight-bold" onClick={()=>{handleLogout()}}>
+                    <i class="fa-solid fa-right-from-bracket"></i> <b>Salir</b>
+                    </button>
                   </li>
                 </ul>
               </li>
