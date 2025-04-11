@@ -2,7 +2,9 @@ import React, { useContext } from "react";
 import { GlobalContext } from "../context/GlobalContext";
 
 export default function Profile() {
+
   const { user } = useContext(GlobalContext);
+
   return (
     <div className="container d-flex justify-content-center align-items-center">
       <div className="container d-flex justify-content-center align-items-center min-vh-100">

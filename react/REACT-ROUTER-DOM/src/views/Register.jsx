@@ -24,6 +24,7 @@ export default function Register() {
         username: username,
         password: password
       })
+      localStorage.setItem("user", JSON.stringify({username, password}))
       setUserIsLogged(true)
       navegar("/")
     }

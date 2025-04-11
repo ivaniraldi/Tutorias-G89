@@ -9,6 +9,7 @@ export default function Gallery({ products }) {
     p.category.toLowerCase().includes(busqueda.toLowerCase()) ||
     p.description.toLowerCase().includes(busqueda.toLowerCase()) ;
   });
+  const userLocal = JSON.parse(localStorage.getItem("user"))
 
   return (
     <div className="container mt-4">
@@ -25,6 +26,9 @@ export default function Gallery({ products }) {
         <a className="btn btn-primary" href="">
           Buscar
         </a>
+        {userLocal && <a className="btn btn-primary" href="/profile">
+          {userLocal.username}
+        </a>}
       </div>
       <div className="gallery">
         {productosFiltrados.length > 0 ? (

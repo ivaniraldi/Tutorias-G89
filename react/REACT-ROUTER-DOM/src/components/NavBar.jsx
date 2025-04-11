@@ -8,6 +8,7 @@ export default function NavBar() {
 
   const handleLogout = () => {
     setUser(null)
+    localStorage.removeItem("user")
     setUserIsLogged(false)
     navegar("/")
   }
