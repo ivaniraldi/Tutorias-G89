@@ -22,7 +22,8 @@ export default function Register() {
     else {
       setUser({
         username: username,
-        password: password
+        password: password,
+        role: "admin"
       })
       localStorage.setItem("user", JSON.stringify({username, password}))
       setUserIsLogged(true)

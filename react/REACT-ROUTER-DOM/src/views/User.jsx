@@ -1,7 +1,11 @@
 import React from 'react'
+import { useParams } from 'react-router-dom'
 
 export default function User() {
+    const {nombre} = useParams()
   return (
-    <div>aca aparezca el nombre de la url</div>
+    <div>
+        <h1>Hola {nombre}</h1>
+    </div>
   )
 }

@@ -3,18 +3,19 @@ import { NavLink, useNavigate } from "react-router-dom";
 import { GlobalContext } from "../context/GlobalContext";
 
 export default function NavBar() {
-  const { userIsLogged, user, setUser, setUserIsLogged } = useContext(GlobalContext);
+  const { userIsLogged, user, setUser, setUserIsLogged } =
+    useContext(GlobalContext);
   const navegar = useNavigate();
 
   const handleLogout = () => {
-    setUser(null)
-    localStorage.removeItem("user")
-    setUserIsLogged(false)
-    navegar("/")
-  }
+    setUser(null);
+    localStorage.removeItem("user");
+    setUserIsLogged(false);
+    navegar("/");
+  };
 
-  const changeActive = ({ isActive }) => (isActive ? "text-success" : "text-danger");
-
+  const changeActive = ({ isActive }) =>
+    isActive ? "text-success" : "text-danger";
 
   return (
     <nav className="navbar navbar-expand-lg">
@@ -40,18 +41,30 @@ export default function NavBar() {
                 Inicio
               </NavLink>
             </li>
-            {!userIsLogged && <>
-              <li className="nav-item">
-              <NavLink className={`me-2 ${changeActive}`} aria-current="page" to="/login">
-                Login
-              </NavLink>
-            </li>
-            <li className="nav-item">
-              <NavLink className={({ isActive }) => (isActive ? "text-success" : "text-danger") } aria-current="page" to="/register">
-                Register
-              </NavLink>
-            </li>
-            </>}
+            {!userIsLogged && (
+              <>
+                <li className="nav-item">
+                  <NavLink
+                    className={`me-2 ${changeActive}`}
+                    aria-current="page"
+                    to="/login"
+                  >
+                    Login
+                  </NavLink>
+                </li>
+                <li className="nav-item">
+                  <NavLink
+                    className={({ isActive }) =>
+                      isActive ? "text-success" : "text-danger"
+                    }
+                    aria-current="page"
+                    to="/register"
+                  >
+                    Register
+                  </NavLink>
+                </li>
+              </>
+            )}
             {userIsLogged && (
               <li className="nav-item dropdown">
                 <a
@@ -71,26 +84,40 @@ export default function NavBar() {
                   </li>
                   <li>
                     <a className="dropdown-item" href="#">
-                      <img style={{width: "30px", borderRadius:"100%"}} src="https://upload.wikimedia.org/wikipedia/commons/7/7c/Profile_avatar_placeholder_large.png?20150327203541" alt="" /> {user.username}
-                    </a> 
+                      <img
+                        style={{ width: "30px", borderRadius: "100%" }}
+                        src="https://upload.wikimedia.org/wikipedia/commons/7/7c/Profile_avatar_placeholder_large.png?20150327203541"
+                        alt=""
+                      />{" "}
+                      {user.username}
+                    </a>
                   </li>
                   <li>
                     <hr className="dropdown-divider" />
                   </li>
                   <li>
-                    <button className="dropdown-item text-danger font-weight-bold" onClick={()=>{handleLogout()}}>
-                    <i class="fa-solid fa-right-from-bracket"></i> <b>Salir</b>
+                    <button
+                      className="dropdown-item text-danger font-weight-bold"
+                      onClick={() => {
+                        handleLogout();
+                      }}
+                    >
+                      <i class="fa-solid fa-right-from-bracket"></i>{" "}
+                      <b>Salir</b>
                     </button>
                   </li>
                 </ul>
               </li>
             )}
-            <button className="btn btn-primary" onClick={()=>{navegar("/login")}} >
-              ir al login
-            </button>
+            <li>
+                    <NavLink className="dropdown-item" to="/admin">
+                      Admin panel
+                    </NavLink>
+                  </li>
+                  <button className="btn btn-primary" type="button" disabled={userIsLogged ? true : false}>
+                    Test
+                  </button>
           </ul>
-        
-          
         </div>
       </div>
     </nav>

@@ -3,7 +3,10 @@ import { Link, useParams } from "react-router-dom";
 
 export default function ProductDetail() {
   const [product, setProduct] = useState(null);
-  const { pepito } = useParams();
+const parametros = useParams();
+console.log(parametros)
+
+  const pepito = parametros.pepito
 
 
   const getProduct = async () => {
@@ -16,7 +19,7 @@ export default function ProductDetail() {
 
   useEffect(() => {
     getProduct();
-  }, [product, pepito]);
+  }, [pepito]);
 
   
 

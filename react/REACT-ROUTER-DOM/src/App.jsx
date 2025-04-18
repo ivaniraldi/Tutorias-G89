@@ -11,27 +11,33 @@ import ProductDetail from "./views/ProductDetail";
 import { GlobalContext } from "./context/GlobalContext";
 import { useContext } from "react";
 import User from "./views/User";
+import Admin from "./views/Admin";
 
 function App() {
-  const {userIsLogged} = useContext(GlobalContext);
+  const {userIsLogged, user} = useContext(GlobalContext);
+  console.log(user)
   return (
     <>
+    
+
       <div className="d-flex flex-column min-vh-100 justify-content-between">
         <NavBar />
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/login" element={<Login />} />
+          <Route path="/login" element={userIsLogged ? <Navigate to={"/"} /> : <Login />} />
           <Route
             path="/profile"
             element={userIsLogged ? <Profile /> : <Navigate to={"/login"} />}
-          />
-          <Route path="/register" element={<Register />} />
+            />
+          <Route path="/register" element={userIsLogged? <Navigate to={"/"} /> : <Register />} />
           <Route path="/product/:pepito" element={<ProductDetail />} />
           <Route path="/user/:nombre" element={<User />} />
+          <Route path="/admin" element={user?.role === "admin" ? <Admin /> : <Navigate to={"/login"} />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
         <Footer />
       </div>
+
     </>
   );
 }
