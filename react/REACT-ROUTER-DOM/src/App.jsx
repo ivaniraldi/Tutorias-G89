@@ -10,6 +10,7 @@ import NotFound from "./views/NotFound";
 import ProductDetail from "./views/ProductDetail";
 import { GlobalContext } from "./context/GlobalContext";
 import { useContext } from "react";
+import User from "./views/User";
 
 function App() {
   const {userIsLogged} = useContext(GlobalContext);
@@ -26,6 +27,7 @@ function App() {
           />
           <Route path="/register" element={<Register />} />
           <Route path="/product/:pepito" element={<ProductDetail />} />
+          <Route path="/user/:nombre" element={<User />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
         <Footer />

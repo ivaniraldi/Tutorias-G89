@@ -5,6 +5,7 @@ export default function ProductDetail() {
   const [product, setProduct] = useState(null);
   const { pepito } = useParams();
 
+
   const getProduct = async () => {
     const respuesta = await fetch(
       `https://fakestoreapi.com/products/${pepito}`

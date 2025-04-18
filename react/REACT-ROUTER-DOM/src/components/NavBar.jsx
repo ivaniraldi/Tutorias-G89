@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { GlobalContext } from "../context/GlobalContext";
 
 export default function NavBar() {
@@ -12,6 +12,10 @@ export default function NavBar() {
     setUserIsLogged(false)
     navegar("/")
   }
+
+  const changeActive = ({ isActive }) => (isActive ? "text-success" : "text-danger");
+
+
   return (
     <nav className="navbar navbar-expand-lg">
       <div className="container-fluid">
@@ -32,26 +36,26 @@ export default function NavBar() {
         <div className="collapse navbar-collapse" id="navbarExample">
           <ul className="navbar-nav me-auto mb-0">
             <li className="nav-item">
-              <Link className="nav-link" aria-current="page" to="/">
+              <NavLink className={changeActive} aria-current="page" to="/">
                 Inicio
-              </Link>
+              </NavLink>
             </li>
             {!userIsLogged && <>
               <li className="nav-item">
-              <Link className="nav-link" aria-current="page" to="/login">
+              <NavLink className={`me-2 ${changeActive}`} aria-current="page" to="/login">
                 Login
-              </Link>
+              </NavLink>
             </li>
             <li className="nav-item">
-              <Link className="nav-link" aria-current="page" to="/register">
+              <NavLink className={({ isActive }) => (isActive ? "text-success" : "text-danger") } aria-current="page" to="/register">
                 Register
-              </Link>
+              </NavLink>
             </li>
             </>}
             {userIsLogged && (
               <li className="nav-item dropdown">
                 <a
-                  className="nav-link dropdown-toggle"
+                  className="nav-NavLink dropdown-toggle"
                   href="#"
                   role="button"
                   data-bs-toggle="dropdown"
@@ -61,9 +65,9 @@ export default function NavBar() {
                 </a>
                 <ul className="dropdown-menu">
                   <li>
-                    <Link className="dropdown-item" to="/profile">
+                    <NavLink className="dropdown-item" to="/profile">
                       Ver perfil
-                    </Link>
+                    </NavLink>
                   </li>
                   <li>
                     <a className="dropdown-item" href="#">
@@ -81,7 +85,11 @@ export default function NavBar() {
                 </ul>
               </li>
             )}
+            <button className="btn btn-primary" onClick={()=>{navegar("/login")}} >
+              ir al login
+            </button>
           </ul>
+        
           
         </div>
       </div>
